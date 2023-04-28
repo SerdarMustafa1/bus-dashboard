@@ -1,0 +1,272 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+  query: RootQuery
+  mutation: RootMutation
+}
+
+type Activity {
+  _id: ID!
+  createdAt: String!
+  message: String!
+}
+
+type Campaign {
+  _id: ID!
+  budget: Float!
+  cities: [City!]!
+  client: Client!
+  createdAt: String!
+  creator: User!
+  endDate: String!
+  installs: [Install!]!
+  isActive: Boolean!
+  name: String!
+  placements: [Placement!]!
+  removes: [Remove!]!
+  startDate: String!
+  updatedAt: String!
+}
+
+type City {
+  _id: ID!
+  campaigns: [Campaign!]!
+  createdAt: String!
+  latitude: Float!
+  longitude: Float!
+  name: String!
+  operators: [Operator!]!
+  short: String!
+  updatedAt: String!
+  users: [User!]!
+  vehicles: [Vehicle!]!
+}
+
+type Client {
+  _id: ID!
+  campaigns: [Campaign!]!
+  company: String!
+  createdAt: String!
+  email: String
+  isDeleted: Boolean!
+  person: String!
+  phone: String
+  updatedAt: String!
+}
+
+type Install {
+  _id: ID!
+  campaign: Campaign!
+  count: Int!
+  createdAt: String!
+  installed: Boolean!
+  installer: User!
+  placement: Placement!
+  remove: Remove
+  updatedAt: String!
+  vehicle: Vehicle!
+}
+
+type Operator {
+  _id: ID!
+  city: City!
+  company: String
+  operatorId: String!
+  vehicles: [Vehicle!]!
+}
+
+type Place {
+  _id: ID!
+  name: String!
+  placements: [Placement!]!
+}
+
+type Placement {
+  _id: ID!
+  campaign: Campaign!
+  count: Int!
+  createdAt: String!
+  installs: [Install!]!
+  isPublic: Boolean!
+  place: Place!
+  removes: [Remove!]!
+  updatedAt: String!
+}
+
+type Remove {
+  _id: ID!
+  campaign: Campaign!
+  count: Int!
+  createdAt: String!
+  placement: Placement!
+  remover: User!
+  updatedAt: String!
+  vehicle: Vehicle!
+}
+
+type RootMutation {
+  campaignCreate(
+    budget: Float!
+    cities: [ID!]!
+    client: ID!
+    endDate: String!
+    name: String!
+    places: [PrePlacement!]!
+    startDate: String!
+  ): Campaign!
+  campaignDelete(_id: ID!): Campaign!
+  campaignShare(_id: ID!, email: String!): Boolean
+  campaignUpdate(
+    _id: ID!
+    budget: Float
+    cities: [ID!]
+    endDate: String
+    name: String
+    places: [PrePlacement!]!
+    startDate: String
+  ): Campaign!
+  clientCreate(
+    company: String!
+    email: String
+    person: String!
+    phone: String
+  ): Client!
+  clientDelete(_id: ID!): Client!
+  clientUpdate(
+    _id: ID!
+    company: String
+    email: String
+    person: String
+    phone: String
+  ): Client!
+  install(count: Int!, placement: String!, vehicle: String!): Install!
+  installRemove(placement: ID!, vehicle: ID!): Remove!
+  operatorUpdate(_id: ID!, company: String): Operator!
+  placeCreate(name: String!): Place!
+  placeDelete(_id: ID!): Place!
+  placeUpdate(_id: ID!, name: String!): Place!
+  protectEndPointsSet(value: Boolean!): Boolean!
+  resetPassword(password: String!, token: String!): Boolean!
+  saveVehiclesLocations: Boolean!
+  userCreate(
+    city: ID
+    email: String!
+    name: String!
+    phone: String
+    role: Int!
+  ): User!
+  userCredentials(_id: ID!, email: String, password: String): User!
+  userDelete(_id: ID!): User!
+  userMailing(_id: ID!, mail: String!, value: Boolean!): Boolean!
+  userUpdate(
+    _id: ID!
+    city: ID
+    email: String
+    name: String
+    phone: String
+    role: Int
+  ): User!
+  vehicleUpdate(_id: String!, numberPlate: String): Vehicle!
+}
+
+type RootQuery {
+  activities(limit: Int, skip: Int, types: [String!]): [Activity!]!
+  activity(_id: ID): Activity
+  campaign(_id: ID): Campaign
+  campaignCities(_id: ID!): [City!]!
+  campaignInstalls(_id: ID!): [Install!]!
+  campaignLogin(_id: ID!, password: String!): String
+  campaignPlacements(_id: ID!): [Placement!]!
+  campaignVehicles(_id: ID!): [Vehicle!]!
+  campaigns(limit: Int, search: String, skip: Int): [Campaign!]!
+  campaignsActive: [Campaign!]!
+  campaignsForInstallers(query: String): [Campaign!]!
+  campaignsThisMonth: [Campaign!]!
+  cities: [City!]!
+  city(_id: ID): City
+  cityCampaigns(_id: ID!): [Campaign!]!
+  cityUsers(_id: ID!): [User!]!
+  cityVehicles(_id: ID!): [Vehicle!]!
+  client(_id: ID): Client
+  clientCampaigns(_id: ID!): [Campaign!]!
+  clients(
+    company: String
+    email: String
+    person: String
+    phone: String
+  ): [Client!]!
+  clientsThisMonth: [Client!]!
+  install(_id: ID): Install
+  installs: [Install!]!
+  login(email: String!, password: String!): String!
+  operator(_id: ID): Operator
+  operatorVehicles(_id: ID!): [Vehicle!]!
+  operators(company: String, operatorId: String): [Operator!]!
+  passwordRecovery(email: String!): Boolean!
+  place(_id: ID): Place
+  placePlacements(_id: ID!): [Placement!]!
+  placement(_id: ID): Placement
+  placementByVehicle(_id: ID!, vehicle: ID!): Placement!
+  placementInstalls(_id: ID!): [Install!]!
+  placementRemoves(_id: ID!): [Remove!]!
+  placements: [Placement!]!
+  places(name: String): [Place!]!
+  recoveryValidate(token: String!): String!
+  remove(_id: ID): Remove
+  removes: [Remove!]!
+  tokenValidate: String!
+  user(_id: ID): User
+  userCampaigns(_id: ID): [Campaign!]!
+  userInstalls(_id: ID): [Install!]!
+  userRemoves(_id: ID): [Remove!]!
+  users(email: String, name: String, phone: String): [User!]!
+  vehicle(_id: String): Vehicle
+  vehicleActivities(
+    _id: ID!
+    limit: Int
+    skip: Int
+    types: [String!]
+  ): [Activity!]!
+  vehicleCampaigns(_id: String!): [Campaign!]!
+  vehicleInstalls(_id: String!, installed: Boolean): [Install!]!
+  vehiclePlacements(_id: String!): [Placement!]!
+  vehicleRemoves(_id: String!): [Remove!]!
+  vehicles(limit: Int, query: String): [Vehicle!]!
+}
+
+type User {
+  Removes: [Remove!]!
+  _id: ID!
+  campaigns: [Campaign!]!
+  city: City
+  createdAt: String!
+  email: String!
+  installs: [Install!]!
+  isDeleted: Boolean
+  name: String!
+  phone: String
+  role: Int!
+  updatedAt: String!
+}
+
+type Vehicle {
+  _id: String!
+  city: City!
+  createdAt: String!
+  haveAdds: Boolean!
+  installs: [Install!]!
+  latitude: Float!
+  line: String
+  longitude: Float!
+  numberPlate: String
+  operator: Operator!
+  removes: [Remove!]!
+  type: Int!
+  updatedAt: String!
+  vehicleNumber: String!
+}
+
+input PrePlacement {
+  count: Int!
+  place: ID!
+}

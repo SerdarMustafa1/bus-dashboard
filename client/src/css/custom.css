@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Cousine:wght@700&display=swap');
+body {
+  font-size: 1.17rem;
+  background: linear-gradient(#3560a7 0%, #0f2542 100%);
+}
+
+.fleet-head {
+  padding: 20px;
+  box-shadow: 0 0 5px gray;
+}
+
+.fleet-search {
+  background-color: white;
+  padding: 10px;
+  margin: 0;
+  border-radius: 0 0 5px 5px;
+}
+
+.fleet-item {
+  display: flex;
+  padding: 20px;
+  box-shadow: 1px 1px 3px black;
+  border-radius: 1px;
+  background-color: white;
+  margin: 5px 0;
+}
+
+.navbar {
+  background-color: #294569;
+}
+
+.install-col-val > strong {
+  font-size: 1rem;
+}
+.install-col-val > div {
+  font-size: 0.92rem;
+}
+
+.navbar-container {
+  display: block;
+  min-height: 48px;
+}
+.navbar-container > .container {
+  display: block;
+}
+.navbar-container > .container > .i-bot-nav > div > a {
+  flex-grow: 1;
+  text-align: center;
+  padding: 15px;
+}
+.navbar-container > .container > .i-bot-nav > div > a > i {
+  color: #fff;
+  font-size: 26px;
+}
+.navbar-container > .container > .i-bot-nav > div > .active > i {
+  color: #ffbb44;
+  font-size: 30px;
+}
+
+.text-vehicle-info {
+  color: #3560a7;
+  font-weight: bold;
+  margin: auto;
+}
+
+.card-history-add {
+  border-radius: 5px;
+  background-color: #47db52;
+  margin-left: 10px;
+}
+
+.card-history-rem {
+  background-color: #ff533f;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.activity-text > a {
+  color: #fb8c00;
+}
+
+.btn-warning:hover {
+  color: #fff !important;
+}
+
+.table-checkbox {
+  text-align: center;
+}
+
+tbody > .click {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=style.css.map */
+.vertical-text {
+  margin: auto 10px;
+  width: 7px;
+  white-space: pre-wrap;
+  text-align: center;
+  color: #fff;
+  font-weight: bolder;
+  line-height: 0.8rem;
+  font-size: 0.65rem;
+}
+
+.card-bottom-progress {
+  height: 0.5rem;
+  border-radius: 0 0 0.25rem 0.25rem !important;
+}
+
+.vertical-text-wrapper {
+  display: flex;
+  border-radius: 0.25rem 0 0 0;
+}
+
+.mini-stat {
+  min-height: 157px;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.leaflet-popup-content-wrapper {
+  background: rgba(255, 255, 255, 0.9) !important;
+}
+
+.leaflet-popup-content-wrapper .leaflet-popup-content {
+  /*background: rgba(255,255,255,0.9);*/
+}
+
+.leaflet-popup-tip-container {
+  /*background: rgba(255,255,255,0.9);*/
+}
+
+.input-group-append .btn,
+.input-group-prepend .btn {
+  z-index: unset;
+}
+
+.place-field > .input-group-append > .btn {
+  padding: 0 0.32rem;
+}
+.place-field > .input-group-prepend > .btn {
+  padding: 0 0.5rem;
+}
+
+.input-group-append > .btn,
+.input-group-prepend > .btn {
+  padding: 0 0.5rem;
+}
+.input-group-append > .input-group-text,
+.input-group-prepend > .input-group-text {
+  padding: 0 0.5rem;
+}
+
+.init-logo {
+  border-radius: 0.3rem 0.9rem 0.3rem 0.9rem;
+}
+
+span.mb-2 {
+  vertical-align: middle;
+  font-size: 1.1rem;
+}
+span.mb-2 > img {
+  height: 25px;
+  padding: 0 5px;
+}
+
+.leaflet-popup-content {
+  width: max-content !important;
+}
+
+.lang > .nav-link {
+  padding: 0;
+}
+
+.campaign-progress {
+  margin-top: 2px;
+  border-radius: 0;
+  max-height: 8px;
+}
+
+.campaign-images > .col > i {
+  font-size: 1.8rem;
+}
+
+.campview-images:hover {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.form-control {
+  height: 2.1rem;
+  font-size: 0.8rem;
+}
+
+.ReactModalPortal > div {
+  z-index: 2000 !important;
+}
+
+.bg-main {
+  background-color: #0f2542;
+}
+
+.font-sm {
+  font-size: 0.9rem !important;
+}
+
+.font-xs {
+  font-size: 0.8rem !important;
+}
+
+.font-md {
+  font-size: 1rem !important;
+}
+
+.operator-active {
+  background-color: rgba(0, 255, 0, 0.1);
+}
+
+.operator-visible {
+  background-color: rgba(255, 255, 0, 0.1);
+}
+
+.operator-disabled {
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+/*# sourceMappingURL=custom.css.map */

@@ -1,0 +1,195 @@
+General:
+> Map
+
+
+Campaigns:
+> All campaigns (Data Table)
+
+> Top Income by Client (Widget)
+> Top Campaigns by Client (Widget)
+> Top Campaigns by User(Sales) (Widget)
+
+> Popular Placements (Columnchart)
+> Popular sale days in month (Column chart)
+
+> Monthly income line chart.
+
+Campaign:
+name:
+client:
+creator:
+budget:
+cities:
+- Algus ja lõppkuupäev
+
+- Reklaami asukohad ja nende kogused(Kokku / Paigaldatud) (Dashboard1:ChartCards)
+> Map
+
+> Total distance by fleet (SOON)
+
+Fleets:
+> Statistics:
+    Total Fleets
+    Total Fleets with campaign
+
+> Fleets on by city  (General:Map)
+> All Fleets (Data Table)
+
+
+Vehicle:
+- Kus linnas asub   (Wdgets BigInfoCard)
+- Pilt (Icon)
+- numberPlate
+- idCode
+- kaart punktiga.
+- Hetkeliin mida sõidab(Kui on)
+
+- Tabel Installations (Reklaamid: nimi, kogus)
+
+
+Client:
+company name
+contact person
+email
+phone
+
+- Palju erinevaid kliente
+- Sisse toonud ettevõttele
+- Kampaaniad kokku
+- Kampaaniad Tehtud
+- Kampaaniad käimasolevad
+- Viimane kampaania
+- List kampaaniad (olnud/on)
+
+
+User:(Account) (Wdgets BigInfoCard)
+
+name: String!
+email: String!
+phone: String
+role: Role!
+
+Sales:
+- Teeninud ettevõttele
+- Top sale(by Who)
+- Sales (Campaigns : History)
+- Firmade järgi nimekiri
+- Viimane müük (kampaania)
+
+
+Installer:
+- Totall installations
+- Removed
+- Igakuine graafik
+- Bussid kuhu on paigaldanud (History)
+
+
+
+
+const ActivityTypes = {
+  CAMPAIGN: {
+    NEW: "campaign.new",  // user1 (creator)   campaign
+    EDIT: "campaign.edit", // user1 (changer)   campaign
+    DELETE: "campaign.del"  // user1 (deleter)   campaign
+  },
+  INSTALLATION: "installation",  // user1 (installer)  installation
+  UNINSTALLATION: "uninstallation",  // user1 (installer)  installation
+  CLIENT: {
+    NEW: "client.new",  // user1 (creator)  client
+    EDIT: {
+      COMPANY: "client.edit.company",  // user1 (changer)  client  strValue1 (oldVal) strValue2 (newVal)
+      PERSON: "client.edit.person",  // user1 (changer)  client  strValue1 (oldVal) strValue2 (newVal)
+      EMAIL: "client.edit.email",  // user1 (changer)  client  strValue1 (oldVal) strValue2 (newVal)
+      PHONE: "client.edit.phone",  // user1 (changer)  client  strValue1 (oldVal) strValue2 (newVal)
+    },
+    DELETE: "client.del"  // user (deleter)  client
+  },
+  FLEET: {
+    EDIT: {
+      NUMBERPLATE: "fleet.edit.numberplate",
+    }
+  },
+  USER: {
+    NEW: "user.new",  // user1 (creator)  user2 (user)
+    EDIT: {
+      NAME: "user.edit.name",  // user1 (chagner-) user2 (user)  strValue1 (oldVal) strValue2 (newVal)
+      PHONE: "user.edit.phone",  // user1 (chagner-) user2 (user)  strValue1 (oldVal) strValue2 (newVal)
+      ROLE: "user.edit.role",  // user1 (chagner-) user2 (user)  strValue1 (oldId) strValue2 (newId)
+      CITY: "user.edit.city",  // user1 (chagner-) user2 (user)  strValue1 (oldId) strValue2 (newId)
+      EMAIL: "user.edit.email",  // user1 (chagner-) user2 (user)  strValue1 (oldVal) strValue2 (newVal)
+      PASSWORD: "user.edit.password",  // user1 (chagner-)
+      IMG: "user.edit.img"  // user1 (chagner-)
+    },
+    DELETE: "user.delete"  // user1 (deleter-) user2 (user)
+  }
+};
+
+IMPORTANT
+
+If INSTALL: DONE
+  Install.placement.isPublic = true;
+  Install.fleet.haveAdds = true;
+
+If UNINSTALL: DONE
+  All Installations.installed = false;
+  All Installations.uninstallation = Remove;
+  Remove.Vehicle.haveAdds = CHECK;
+  Remove.placement.isPublic = CHECK;
+
+Machine on start:
+  All Fleets and All Placements and All Installations
+  Update needed Fleets
+  Update needed Installations
+
+
+
+
+//// IF WE HAVE INSTALLATION AND IN THE END BY MISTAKE IT HAPPENS  HOW LOW CAN BE MINIMUM CAMPAIGN TIME
+
+
+BIG QUESTION!? PROFILING.
+
+INSTALLER TEAM BOSS? (Gets notification 3days and same day)
+
+MAP FOR INSTALLER TEAM.
+
+track how long add is up, because if person install and uninstall right away then I need to act differently
+
+
+How many driven kilometers.
+
+Need to get hot areas.
+
+give scores for areas.
+
+
+
+Navbar links nad icons bigger
+
+// mongodb://@34.244.47.154:27017/bus
+
+// undraw.co
+
+SNOW!!!!     react-snowfall
+
+ALTER USER 'mysql'@'%' IDENTIFIED WITH mysql_native_password BY 'thgLOJ';
+
+CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
+
+"react-snowfall": "^1.0.2",
+
+      // if (this.props.data.duplicates) { //DUPLICATE OBJECT REMOVER
+      //   const uniqByProp_map = prop => arr =>
+      //   Array.from(
+      //     arr
+      //       .reduce(
+      //         (acc, item) => (
+      //           item && item[prop] && acc.set(item[prop], item),
+      //           acc
+      //         ), // using map (preserves ordering)
+      //         new Map()).values()
+      //   );
+
+      //   const uniqueById = uniqByProp_map("_id");
+      //   vehicles = uniqueById(vehicles);
+      // }

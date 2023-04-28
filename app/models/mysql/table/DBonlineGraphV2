@@ -1,0 +1,207 @@
+Table Email {
+  _id [pk]
+  email varchar
+  isValid boolean
+}
+Table User {
+  _id varchar [pk]
+  name varchar
+  email varchar
+  phone varchar
+  password varchar
+  passwordToken varchar
+  PasswordTokenExpires datetime
+  role int
+  city varchar [ref: > City._id]
+  isDeleted boolean
+  created_at datetime
+  updated_at datetime
+}
+Table Mail {
+  user_id varchar [pk, ref: > User._id]
+  mailCampCreated boolean
+  mailCampChanged boolean
+  mailPreStart boolean
+  mailStart boolean
+  mailPreEnd boolean
+  mailEnd  boolean
+  mailInstallDone boolean
+  mailRemoveDone boolean
+}
+
+Table Client {
+  _id varchar [pk]
+  company varchar
+  person varchar
+  email varchar
+  phone varchar
+  isDeleted boolean
+  created_at datetime
+  updated_at datetime
+}
+
+Table Place {
+  _id varchar [pk]
+  name varchar
+  isDeleted varchar
+}
+Table Placement {
+  _id varchar [pk]
+  place_id Place [ref: > Place._id]
+  campaign_id varchar [ref: > Campaign._id]
+  count int
+  isPublic boolean
+  created_at datetime
+  updated_at datetime
+}
+
+Table InstallOrder {
+  _id varchar [pk]
+  placement_id Place [ref: > Placement._id]
+  campaign_id varchar [ref: > Campaign._id]
+  team_id varchar [ref: > Team._id]
+  count int
+  user_id User [ref: > User._id]
+  created_at datetime
+  updated_at datetime
+}
+
+Table City {
+  _id varchar [pk]
+  name varchar
+  short varchar
+  latitude float
+  longitude float
+}
+Table Vehicle {
+  _id varchar [pk]
+  vehicleNumber varchar
+  operator_id varchar [ref: > Operator._id]
+  numberPlate varchar
+  line varchar
+  city_id City [ref: > City._id]
+  latitude float
+  longitude float
+  haveAds boolean
+  listed boolean
+}
+Table Operator {
+  _id int [pk]
+  operatorId varchar
+  company varchar
+  city_id varchar [ref: > City._id]
+  listed boolean
+}
+
+Table VehicleCache {
+  vehicle_id varchar [ref: > Vehicle._id]
+  line varchar
+  latitude float
+  longitude float
+}
+
+Table Campaign {
+  _id varchar [pk]
+  name varchar
+  client_id varchar [ref: > Client._id]
+  creator_id varchar [ref: > User._id]
+  budget float
+
+  preStart boolean
+  started boolean
+  preEnd boolean
+  ended boolean
+
+  startDate datetime
+  endDate datetime
+  isPublic boolean
+  created_at datetime
+  updated_at datetime
+
+  isDeleted boolean
+}
+
+Table CampaignCity {
+  campaign_id varchar [ref: > Campaign._id]
+  city_id varchar [ref: > City._id]
+}
+
+Table Activity {
+  _id int [pk]
+  user1_id varchar [ref: > User._id]
+  user2_id varchar [ref: > User._id]
+  client_id varchar [ref: > Client._id]
+  campaign_id varchar [ref: > Campaign._id]
+  placement_id varchar [ref: > Placement._id]
+  install_id varchar [ref: > Install._id]
+  remove_id varchar [ref: > Remove._id]
+  operator_id varchar [ref: > Operator._id]
+  vehicle_id varchar [ref: > Vehicle._id]
+  installOrder_id varchar [ref: > InstallOrder._id]
+  count int
+  activityType varchar
+  created_at datetime
+}
+Table Remove {
+  _id varchar [pk]
+  installer_id varchar [ref: > Installer._id]
+  user_id varchar [ref: > User._id]
+
+  vehicle_id varchar [ref: > Vehicle._id]
+  placement_id varchar [ref: > Placement._id]
+  campaign_id varchar [ref: > Campaign._id]
+  count int
+  created_at datetime
+  updated_at datetime
+}
+Table Install {
+  _id varchar [pk]
+  installOrder_id varchar [ref: > InstallOrder._id]
+  installer_id varchar [ref: > Installer._id]
+  user_id varchar [ref: > User._id]
+  vehicle_id varchar [ref: > Vehicle._id]
+  placement_id varchar [ref: > Placement._id]
+  campaign_id varchar [ref: > Campaign._id]
+  remover_id varchar [ref: > Remove._id]
+  installed boolean
+  count int
+  created_at datetime
+  updated_at datetime
+}
+Table Picture {
+  _id varchar [pk]
+  vehicle_id varchar [ref: > Vehicle._id]
+  placement_id varchar [ref: > Placement._id]
+  user_id varchar [ref: > User._id]
+  team_id varchar [ref: > Team._id]
+  path varchar
+  comment varchar
+  removed_at datetime
+  created_at datetime
+  updated_at datetime
+}
+Table Team {
+  _id varchar [pk]
+  company varchar
+  created_at datetime
+  updated_at datetime
+}
+Table Installer {
+  _id varchar [pk]
+  team_id varchar [ref: > Team._id]
+  user_id varchar [ref: > User._id]
+  created_at datetime
+  updated_at datetime
+}
+Table Organization {
+  _id varchar [pk]
+  name varchar
+  theme varchar
+  _user varchar
+  _client varchar
+  _campaign varchar
+  _picture varchar
+  logo varchar
+  created_at datetime
+  updated_at datetime
+}
